@@ -74,3 +74,34 @@ def preprocess_text(text: str) -> List[str]:
         tokens.append(tok)
 
     return tokens
+
+
+# ---------------------------------------------------------------------------
+# BLEU-specific preprocessing
+# ---------------------------------------------------------------------------
+
+# Preserves accented Italian characters (e.g. città, perché) without stemming.
+# BLEU traditionally does not apply stemming.
+_BLEU_TOKEN_RE = re.compile(r"[0-9A-Za-zÀ-ÖØ-öø-ÿ]+", re.UNICODE)
+
+
+def preprocess_text_bleu(text: Any) -> List[str]:
+    """
+    Lowercase and tokenize using a Unicode-aware regex that preserves
+    accented Italian characters. No stemming is applied.
+
+    Used exclusively by the BLEU-NMISS scorer.
+
+    Parameters
+    ----------
+    text : Any
+        Raw input value.
+
+    Returns
+    -------
+    List[str]
+        Ordered list of lowercase tokens (multiplicities preserved).
+    """
+    if not isinstance(text, str):
+        return []
+    return _BLEU_TOKEN_RE.findall(text.lower())
