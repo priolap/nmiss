@@ -7,9 +7,9 @@ Traditional metrics penalize system answers that diverge lexically from the refe
 ## Quickstart
 
 ```python
-from modules.scorer import NMISSScorer
+from modules.scorer import NMISS_Scorer
 
-scorer = NMISSScorer(models=[], context_col="", ref_col="")
+scorer = NMISS_Scorer(models=[], context_col="", ref_col="")
 
 result = scorer.score_one(
     reference="I'm sorry, I cannot answer this question based on the available information.",
@@ -45,7 +45,7 @@ nmiss/
 │   ├── core.py           # NMISS combination formula (Equation 3)
 │   ├── rouge.py          # ROUGE-1, ROUGE-2, ROUGE-L extended with NMISS
 │   ├── meteor.py         # METEOR extended with NMISS
-│   └── scorer.py         # NMISSScorer: single-triple and batch scoring
+│   └── scorer.py         # NMISS_Scorer: single-triple and batch scoring
 ├── utils/
 │   ├── preprocessing.py  # Text normalization and tokenization
 │   ├── multiset.py       # Generic multiset operations
@@ -83,9 +83,9 @@ nltk.download("omw-1.4")
 ### Score a single triple
 
 ```python
-from modules.scorer import NMISSScorer
+from modules.scorer import NMISS_Scorer
 
-scorer = NMISSScorer(models=[], context_col="", ref_col="")
+scorer = NMISS_Scorer(models=[], context_col="", ref_col="")
 
 result = scorer.score_one(reference="...", system="...", context="...")
 
@@ -106,11 +106,11 @@ NMISS expects a DataFrame where each row contains a retrieved context, a referen
 # | "..."     | "..."     | "..."     | "..."     |
 
 import pandas as pd
-from modules.scorer import NMISSScorer
+from modules.scorer import NMISS_Scorer
 
 df = pd.read_excel("your_data.xlsx")
 
-scorer = NMISSScorer(
+scorer = NMISS_Scorer(
     models=["system_A", "system_B"],  # column names of system-generated answers
     context_col="Context",            # column name of retrieved context
     ref_col="Reference",              # column name of reference answer
