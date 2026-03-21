@@ -1,15 +1,15 @@
 # NMISS — Negative Missing Information Scoring System
 
-NMISS extends standard overlap-based metrics (ROUGE-1, ROUGE-2, ROUGE-L, METEOR) with a context-grounded correction component for Retrieval-Augmented Generation (RAG) evaluation.
+NMISS extends standard overlap-based metrics (BLEU, ROUGE-1, ROUGE-2, ROUGE-L, METEOR) with a context-grounded correction component for Retrieval-Augmented Generation (RAG) evaluation.
 
 Traditional metrics penalize system answers that diverge lexically from the reference, even when the additional content is explicitly supported by the retrieved context. NMISS addresses this by assessing whether unmatched n-grams align with the external evidence, distinguishing grounded elaborations from hallucinations.
 
 ## Quickstart
 
 ```python
-from modules.scorer import NMISS_Scorer
+from modules.scorer import NMISSScorer
 
-scorer = NMISS_Scorer(models=[], context_col="", ref_col="")
+scorer = NMISSScorer(models=[], context_col="", ref_col="")
 
 result = scorer.score_one(
     reference="I'm sorry, I cannot answer this question based on the available information.",
@@ -25,6 +25,8 @@ print(f"ROUGE-1 Precision  baseline : {result['rouge1'].f_ref['precision']:.4f}"
 print(f"ROUGE-1 Precision  NMISS    : {result['rouge1'].precision:.4f}")
 print(f"METEOR             baseline : {result['meteor'].meteor_ref:.4f}")
 print(f"METEOR             NMISS    : {result['meteor'].meteor_nmiss:.4f}")
+print(f"BLEU-4             baseline : {result['bleu'].bleu_ref:.4f}")
+print(f"BLEU-4             NMISS    : {result['bleu'].bleu_nmiss:.4f}")
 ```
 
 ## Motivating Example
@@ -43,7 +45,7 @@ nmiss/
 │   ├── core.py           # NMISS combination formula (Equation 3)
 │   ├── rouge.py          # ROUGE-1, ROUGE-2, ROUGE-L extended with NMISS
 │   ├── meteor.py         # METEOR extended with NMISS
-│   └── scorer.py         # NMISS_Scorer: single-triple and batch scoring
+│   └── scorer.py         # NMISSScorer: single-triple and batch scoring
 ├── utils/
 │   ├── preprocessing.py  # Text normalization and tokenization
 │   ├── multiset.py       # Generic multiset operations
@@ -51,6 +53,7 @@ nmiss/
 ├── examples/
 │   └── example_paper.py  # Illustrative example of NMISS vs baseline metrics
 ├── main.py               # Entry point for batch scoring on your data
+├── test_equivalence.py   # Numerical equivalence test vs original implementation
 └── README.md
 ```
 
@@ -80,15 +83,16 @@ nltk.download("omw-1.4")
 ### Score a single triple
 
 ```python
-from modules.scorer import NMISS_Scorer
+from modules.scorer import NMISSScorer
 
-scorer = NMISS_Scorer(models=[], context_col="", ref_col="")
+scorer = NMISSScorer(models=[], context_col="", ref_col="")
 
 result = scorer.score_one(reference="...", system="...", context="...")
 
 print(result["rouge1"].f1)            # ROUGE-1 NMISS F1
 print(result["rouge1"].f_ref["f1"])   # ROUGE-1 baseline F1
 print(result["meteor"].meteor_nmiss)  # METEOR NMISS
+print(result["bleu"].bleu_nmiss)      # BLEU-4 NMISS
 ```
 
 ### Score a full DataFrame
@@ -102,11 +106,11 @@ NMISS expects a DataFrame where each row contains a retrieved context, a referen
 # | "..."     | "..."     | "..."     | "..."     |
 
 import pandas as pd
-from modules.scorer import NMISS_Scorer
+from modules.scorer import NMISSScorer
 
 df = pd.read_excel("your_data.xlsx")
 
-scorer = NMISS_Scorer(
+scorer = NMISSScorer(
     models=["system_A", "system_B"],  # column names of system-generated answers
     context_col="Context",            # column name of retrieved context
     ref_col="Reference",              # column name of reference answer
@@ -124,16 +128,25 @@ Edit the configuration block in `main.py` (file path, sheet name, model columns)
 python main.py
 ```
 
+## Equivalence Test
+
+To verify numerical equivalence with the original implementation, place the two original scripts in the root folder and run:
+
+```bash
+python test_equivalence.py
+```
+
+Expected output:
+```
+Results: 18/18 test groups PASSED
+ALL PASS — refactored code is numerically identical to original.
+Results exported to: test_equivalence_results.csv
+```
+
 ## Reference
 
 If you use NMISS in your work, please cite:
 
 ```
-@article{yourname2025nmiss,
-  title   = {Addressing Hallucinations with RAG and NMISS in Italian Healthcare LLM Chatbots},
-  author  = {Maria Paola Priola},
-  journal = {Under review},
-  year    = {2025},
-  note    = {Preprint available upon request}
-} 
+[citation to be added upon publication]
 ```
