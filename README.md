@@ -1,6 +1,6 @@
 # NMISS — Negative Missing Information Scoring System
 
-NMISS extends standard overlap-based metrics (ROUGE-1, ROUGE-2, ROUGE-L, METEOR) with a context-grounded correction component for retrieval-augmented generation (RAG) evaluation.
+NMISS extends standard overlap-based metrics (ROUGE-1, ROUGE-2, ROUGE-L, METEOR) with a context-grounded correction component for Retrieval-Augmented Generation (RAG) evaluation.
 
 Traditional metrics penalize system answers that diverge lexically from the reference, even when the additional content is explicitly supported by the retrieved context. NMISS addresses this by assessing whether unmatched n-grams align with the external evidence, distinguishing grounded elaborations from hallucinations.
 
