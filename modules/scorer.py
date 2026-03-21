@@ -8,9 +8,7 @@ Exposes:
         Score a single (reference, system, context) triple.
 
     calculate_metrics_for_all_models(df)
-        Iterate over multiple model columns and return a combined DataFrame.
-        Replicates the behaviour of the original NMISSRougeCalculator and
-        MeteorNMISSCalculator classes, producing an identical output.
+        Iterate over multiple system columns and return a combined DataFrame.
 """
 
 from typing import Any, Dict, List
@@ -19,7 +17,8 @@ import pandas as pd
 
 from modules.rouge import RougeNMISSResult, rouge_n_nmiss, rouge_l_nmiss
 from modules.meteor import MeteorNMISSResult, meteor_nmiss
-from utils.preprocessing import normalize_text, preprocess_text
+from modules.bleu import BleuNMISSResult, bleu_nmiss
+from utils.preprocessing import normalize_text, preprocess_text, preprocess_text_bleu
 
 
 # ---------------------------------------------------------------------------
@@ -47,9 +46,19 @@ def _pack_meteor(obj: MeteorNMISSResult) -> Dict[str, Any]:
         "METEOR":         obj.meteor_ref,
         "METEOR_CONTEXT": obj.meteor_cxt,
         "METEOR_NMISS":   obj.meteor_nmiss,
-        "LAMBDA1":        obj.lam1,
-        "LAMBDA2":        obj.lam2,
+        "METEOR_LAMBDA1": obj.lam1,
+        "METEOR_LAMBDA2": obj.lam2,
         "RESIDUAL_LEN":   obj.residual_len,
+    }
+
+
+def _pack_bleu(obj: BleuNMISSResult) -> Dict[str, Any]:
+    return {
+        "BLEU_REF":     obj.bleu_ref,
+        "BLEU_CXT":     obj.bleu_cxt,
+        "BLEU_NMISS":   obj.bleu_nmiss,
+        "BLEU_LAMBDA1": obj.lam1,
+        "BLEU_LAMBDA2": obj.lam2,
     }
 
 
@@ -57,23 +66,28 @@ def _pack_meteor(obj: MeteorNMISSResult) -> Dict[str, Any]:
 # Public scorer class
 # ---------------------------------------------------------------------------
 
-class NMISS_Scorer:
+class NMISSScorer:
     """
-    Compute ROUGE-NMISS (ROUGE-1, ROUGE-2, ROUGE-L) and/or METEOR-NMISS
-    scores for retrieval-augmented generation evaluation.
+    Compute ROUGE-NMISS, METEOR-NMISS, and/or BLEU-NMISS scores for
+    retrieval-augmented generation evaluation.
 
     Parameters
     ----------
     models : List[str]
-        Column names in the input DataFrame that contain system answers.
+        Column names in the input DataFrame that contain system-generated
+        answers. NMISS does not call any language model internally.
     context_col : str
-        Column name that contains the retrieved context passages.
+        Column name of the retrieved context passages.
     ref_col : str
-        Column name that contains the reference (human) answers.
+        Column name of the reference (human) answers.
     compute_rouge : bool, optional
-        Whether to compute ROUGE-NMISS scores (default: True).
+        Whether to compute ROUGE-NMISS (default: True).
     compute_meteor : bool, optional
-        Whether to compute METEOR-NMISS scores (default: True).
+        Whether to compute METEOR-NMISS (default: True).
+    compute_bleu : bool, optional
+        Whether to compute BLEU-NMISS (default: True).
+    bleu_max_n : int, optional
+        Maximum n-gram order for BLEU (default: 4).
     """
 
     def __init__(
@@ -81,19 +95,31 @@ class NMISS_Scorer:
         models: List[str],
         context_col: str,
         ref_col: str,
-        compute_rouge: bool = True,
+        compute_rouge:  bool = True,
         compute_meteor: bool = True,
+        compute_bleu:   bool = True,
+        bleu_max_n:     int  = 4,
     ) -> None:
         self.models         = models
         self.context_col    = context_col
         self.ref_col        = ref_col
         self.compute_rouge  = compute_rouge
         self.compute_meteor = compute_meteor
+        self.compute_bleu   = compute_bleu
+        self.bleu_max_n     = bleu_max_n
 
     def _prep(self, reference: str, system: str, context: str):
+        """Preprocessing for ROUGE and METEOR (stemming, NLTK tokenizer)."""
         ref_toks = preprocess_text(normalize_text(reference))
         sys_toks = preprocess_text(normalize_text(system))
         ctx_toks = preprocess_text(normalize_text(context))
+        return ref_toks, sys_toks, ctx_toks
+
+    def _prep_bleu(self, reference: str, system: str, context: str):
+        """Preprocessing for BLEU (regex-based, no stemming)."""
+        ref_toks = preprocess_text_bleu(reference)
+        sys_toks = preprocess_text_bleu(system)
+        ctx_toks = preprocess_text_bleu(context)
         return ref_toks, sys_toks, ctx_toks
 
     def score_one(self, reference: str, system: str, context: str) -> Dict[str, Any]:
@@ -105,35 +131,41 @@ class NMISS_Scorer:
         dict with keys:
             "rouge1", "rouge2", "rougeL"  →  RougeNMISSResult  (if compute_rouge)
             "meteor"                       →  MeteorNMISSResult (if compute_meteor)
+            "bleu"                         →  BleuNMISSResult   (if compute_bleu)
         """
-        ref_toks, sys_toks, ctx_toks = self._prep(reference, system, context)
         out: Dict[str, Any] = {}
 
-        if self.compute_rouge:
-            out["rouge1"] = rouge_n_nmiss(sys_toks, ref_toks, ctx_toks, n=1)
-            out["rouge2"] = rouge_n_nmiss(sys_toks, ref_toks, ctx_toks, n=2)
-            out["rougeL"] = rouge_l_nmiss(sys_toks, ref_toks, ctx_toks)
+        if self.compute_rouge or self.compute_meteor:
+            ref_toks, sys_toks, ctx_toks = self._prep(reference, system, context)
 
-        if self.compute_meteor:
-            out["meteor"] = meteor_nmiss(sys_toks, ref_toks, ctx_toks)
+            if self.compute_rouge:
+                out["rouge1"] = rouge_n_nmiss(sys_toks, ref_toks, ctx_toks, n=1)
+                out["rouge2"] = rouge_n_nmiss(sys_toks, ref_toks, ctx_toks, n=2)
+                out["rougeL"] = rouge_l_nmiss(sys_toks, ref_toks, ctx_toks)
+
+            if self.compute_meteor:
+                out["meteor"] = meteor_nmiss(sys_toks, ref_toks, ctx_toks)
+
+        if self.compute_bleu:
+            ref_b, sys_b, ctx_b = self._prep_bleu(reference, system, context)
+            out["bleu"] = bleu_nmiss(sys_b, ref_b, ctx_b, max_n=self.bleu_max_n)
 
         return out
 
     def calculate_metrics_for_all_models(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Score all models over all rows of *df*.
+        Score all system columns over all rows of *df*.
 
         Parameters
         ----------
         df : pd.DataFrame
             Must contain columns self.ref_col, self.context_col, and one
-            column per model in self.models.
+            column per system in self.models.
 
         Returns
         -------
         pd.DataFrame
-            One row per (DataFrame row × model) pair, with all intermediate
-            and final metric columns.
+            One row per (DataFrame row × system) pair.
         """
         rows: List[Dict[str, Any]] = []
 
@@ -165,6 +197,9 @@ class NMISS_Scorer:
 
                 if self.compute_meteor:
                     out.update(_pack_meteor(scores["meteor"]))
+
+                if self.compute_bleu:
+                    out.update(_pack_bleu(scores["bleu"]))
 
                 rows.append(out)
 
