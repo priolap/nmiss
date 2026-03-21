@@ -124,21 +124,6 @@ Edit the configuration block in `main.py` (file path, sheet name, model columns)
 python main.py
 ```
 
-## Equivalence Test
-
-To verify numerical equivalence with the original implementation, place the two original scripts in the root folder and run:
-
-```bash
-python test_equivalence.py
-```
-
-Expected output:
-```
-Results: 12/12 test groups PASSED
-ALL PASS — refactored code is numerically identical to original.
-Results exported to: test_equivalence_results.csv
-```
-
 ## Reference
 
 If you use NMISS in your work, please cite:
