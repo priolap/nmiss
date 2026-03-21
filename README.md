@@ -130,10 +130,10 @@ If you use NMISS in your work, please cite:
 
 ```
 @article{yourname2025nmiss,
-  title   = {Your Paper Title},
-  author  = {Your Name},
+  title   = {Addressing Hallucinations with RAG and NMISS in Italian Healthcare LLM Chatbots},
+  author  = {Maria Paola Priola},
   journal = {Under review},
   year    = {2025},
   note    = {Preprint available upon request}
-}
+} 
 ```
