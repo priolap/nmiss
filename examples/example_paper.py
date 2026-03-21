@@ -124,6 +124,12 @@ print(f"  METEOR      NMISS    : {result['meteor'].meteor_nmiss:.4f}")
 print(f"  λ1 = {result['meteor'].lam1}   λ2 = {result['meteor'].lam2}")
 
 print()
+print("── BLEU-4 ───────────────────────────────────────────────")
+print(f"  BLEU-4      baseline : {result['bleu'].bleu_ref:.4f}")
+print(f"  BLEU-4      NMISS    : {result['bleu'].bleu_nmiss:.4f}")
+print(f"  λ1 = {result['bleu'].lam1}   λ2 = {result['bleu'].lam2}")
+
+print()
 print("=" * 60)
 print("NMISS >= baseline for all metrics: grounded elaboration")
 print("is rewarded rather than penalized.")
