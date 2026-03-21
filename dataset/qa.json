@@ -1,0 +1,502 @@
+[
+  {
+    "Question":"Cos'\u00e8 un raffreddore?",
+    "ID":"Q001",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Come prevenire l'influenza?",
+    "ID":"Q002",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa succede quando si ha la febbre?",
+    "ID":"Q003",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa sono i batteri?",
+    "ID":"Q004",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"A cosa serve un vaccino?",
+    "ID":"Q005",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa fa un antibiotico?",
+    "ID":"Q006",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Perch\u00e9 \u00e8 importante bere acqua?",
+    "ID":"Q007",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Come fa l'esercizio fisico a migliorare la salute?",
+    "ID":"Q008",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa \u00e8 una dieta sana?",
+    "ID":"Q009",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Quali sono i sintomi del mal di testa?",
+    "ID":"Q010",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 un termometro?",
+    "ID":"Q011",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Come si misura la pressione sanguigna?",
+    "ID":"Q012",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa succede quando si fuma?",
+    "ID":"Q013",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa significa avere il colesterolo alto?",
+    "ID":"Q014",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Perch\u00e9 \u00e8 importante dormire bene?",
+    "ID":"Q015",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Come possiamo ridurre lo stress?",
+    "ID":"Q016",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 l'asma?",
+    "ID":"Q017",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa sono le allergie?",
+    "ID":"Q018",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 una dieta equilibrata?",
+    "ID":"Q019",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa \u00e8 l'anemia?",
+    "ID":"Q020",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa succede quando ci si frattura le ossa?",
+    "ID":"Q021",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa \u00e8 il sistema immunitario?",
+    "ID":"Q022",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Quali sono i benefici della meditazione?",
+    "ID":"Q023",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 la depressione o il burnout?",
+    "ID":"Q024",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa causa l'insonnia?",
+    "ID":"Q025",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa fa un elettrocardiogramma (ECG)?",
+    "ID":"Q026",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa significa avere un attacco di panico?",
+    "ID":"Q027",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Come si prende la temperatura corporea?",
+    "ID":"Q028",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 una radiografia?",
+    "ID":"Q029",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Quali sono i segni di un'influenza?",
+    "ID":"Q030",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 il colesterolo?",
+    "ID":"Q031",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cosa significa avere la pressione alta?",
+    "ID":"Q032",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Che cosa \u00e8 un'infezione?",
+    "ID":"Q033",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Cos'\u00e8 la sindrome di Asperger?",
+    "ID":"Q034",
+    "LEVEL":"LOW"
+  },
+  {
+    "Question":"Come possiamo migliorare la salute del cuore?",
+    "ID":"Q035",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa significa avere l'ipertensione?",
+    "ID":"Q036",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come funziona il sistema immunitario?",
+    "ID":"Q037",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Quali sono le cause del diabete?",
+    "ID":"Q038",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come si pu\u00f2 ridurre il livello di colesterolo?",
+    "ID":"Q039",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa succede se si \u00e8 obesi?",
+    "ID":"Q040",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Qual \u00e8 la differenza tra diabete di tipo 1 e tipo 2?",
+    "ID":"Q041",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come possiamo prevenire le fratture ossee?",
+    "ID":"Q042",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa causa le malattie cardiache?",
+    "ID":"Q043",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come l'esercizio fisico aiuta la salute mentale?",
+    "ID":"Q044",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa succede al corpo quando siamo stressati?",
+    "ID":"Q045",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come influisce il sonno sulla salute?",
+    "ID":"Q046",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa succede quando c'\u00e8 un'infiammazione?",
+    "ID":"Q047",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come possiamo migliorare la digestione?",
+    "ID":"Q048",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Perch\u00e9 la salute mentale \u00e8 importante per le malattie?",
+    "ID":"Q049",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come prevenire il cancro della pelle?",
+    "ID":"Q050",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa si pu\u00f2 fare per l'artrite?",
+    "ID":"Q051",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come la salute orale influisce sulla salute generale?",
+    "ID":"Q052",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Quali sono i sintomi dell'Alzheimer?",
+    "ID":"Q053",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come la genetica influenza le malattie cardiache?",
+    "ID":"Q054",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come la dieta pu\u00f2 migliorare la salute del cuore?",
+    "ID":"Q055",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come si tratta la depressione?",
+    "ID":"Q056",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come l'esercizio fisico aiuta a prevenire il diabete?",
+    "ID":"Q057",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Quali sono i sintomi di un ictus?",
+    "ID":"Q058",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come il fumo danneggia i polmoni?",
+    "ID":"Q059",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Cosa succede se si beve troppo alcol?",
+    "ID":"Q060",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come gestire l'ansia senza farmaci?",
+    "ID":"Q061",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Quali sono i sintomi del Parkinson?",
+    "ID":"Q062",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come lo stile di vita influenza la pressione sanguigna?",
+    "ID":"Q063",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come la dieta pu\u00f2 aiutare il cervello?",
+    "ID":"Q064",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Perch\u00e9 il sonno \u00e8 importante per prevenire le malattie?",
+    "ID":"Q065",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Come gestire l'artrite con la dieta e l'esercizio?",
+    "ID":"Q066",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Quali sono i sintomi dell'intestino irritabile?",
+    "ID":"Q067",
+    "LEVEL":"MID"
+  },
+  {
+    "Question":"Quali sono le nuove scoperte sul cancro?",
+    "ID":"Q068",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la tecnologia aiuta a diagnosticare le malattie?",
+    "ID":"Q069",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Cosa fa la terapia genica?",
+    "ID":"Q070",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come le differenze sociali influenzano la salute?",
+    "ID":"Q071",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono le sfide della sperimentazione medica?",
+    "ID":"Q072",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come i dati aiutano a gestire le malattie croniche?",
+    "ID":"Q073",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Cosa c'\u00e8 di nuovo nella cura del diabete di tipo 1?",
+    "ID":"Q074",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la pandemia ha influenzato la salute mentale?",
+    "ID":"Q075",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono i problemi dei vaccini nei paesi poveri?",
+    "ID":"Q076",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come il cambiamento climatico influisce sulla salute?",
+    "ID":"Q077",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la medicina personalizzata aiuta a curare il cancro?",
+    "ID":"Q078",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Perch\u00e9 la resistenza agli antibiotici \u00e8 pericolosa?",
+    "ID":"Q079",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come le politiche sanitarie influenzano le cure?",
+    "ID":"Q080",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Qual \u00e8 il futuro della telemedicina?",
+    "ID":"Q081",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la nutrigenomica pu\u00f2 cambiare la dieta?",
+    "ID":"Q082",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono i rischi delle nuove tecnologie genetiche?",
+    "ID":"Q083",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la digitalizzazione cambia la gestione sanitaria?",
+    "ID":"Q084",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono le nuove scoperte sulle cellule staminali?",
+    "ID":"Q085",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come affrontare la crisi della salute mentale nei giovani?",
+    "ID":"Q086",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la biotecnologia pu\u00f2 prevenire le malattie?",
+    "ID":"Q087",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come l'invecchiamento della popolazione influisce sulla sanit\u00e0?",
+    "ID":"Q088",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Cosa fa il microbiota per la salute?",
+    "ID":"Q089",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la medicina di precisione cambia le cure cardiache?",
+    "ID":"Q090",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono le sfide delle malattie rare?",
+    "ID":"Q091",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come migliorare l'aderenza alle terapie nei malati cronici?",
+    "ID":"Q092",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono i problemi etici dei robot in chirurgia?",
+    "ID":"Q093",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come le nuove tecnologie aiutano a diagnosticare le malattie neurodegenerative?",
+    "ID":"Q094",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la salute mentale influisce sull'economia?",
+    "ID":"Q095",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come la scienza comportamentale pu\u00f2 migliorare la sanit\u00e0?",
+    "ID":"Q096",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono le nuove ricerche sul microbioma intestinale?",
+    "ID":"Q097",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come l'ambiente influisce sulla salute umana?",
+    "ID":"Q098",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Quali sono le sfide nella gestione delle malattie croniche negli anziani?",
+    "ID":"Q099",
+    "LEVEL":"HIGH"
+  },
+  {
+    "Question":"Come l'epigenetica pu\u00f2 aiutare a capire le malattie?",
+    "ID":"Q100",
+    "LEVEL":"HIGH"
+  }
+]
