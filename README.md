@@ -148,11 +148,15 @@ Results exported to: test_equivalence_results.csv
 If you use NMISS in your work, please cite:
 
 ```
-@article{priola2025nmiss,
-  title   = {Addressing Hallucinations with RAG and NMISS in Italian Healthcare LLM Chatbots},
-  author  = {Maria Paola Priola},
-  journal = {Under review},
-  year    = {2025},
-  note    = {Preprint available}
+@article{PRIOLA2026102627,
+title = {Addressing hallucinations with RAG and NMISS in Italian healthcare LLM chatbots},
+journal = {Data & Knowledge Engineering},
+volume = {165},
+pages = {102627},
+year = {2026},
+issn = {0169-023X},
+doi = {https://doi.org/10.1016/j.datak.2026.102627},
+url = {https://www.sciencedirect.com/science/article/pii/S0169023X26000741},
+author = {Maria Paola Priola},
 }
 ```
